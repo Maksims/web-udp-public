@@ -21,14 +21,15 @@ Spread the word, [RT's](https://twitter.com/mrmaxm/status/890256659607584768) ar
 
 ## Overview
 
-Web evolved over past years rapidly, improving networking capabilities using such technologies as: **WebSockets, WebRTC, HTTP/2, Server-Sent Events**.
+Web evolved over past years rapidly, improving networking capabilities using such technologies as: **WebSockets, WebRTC, HTTP/2, Server-Sent Events, QUIC**.
 
 Those technologies have own area of application and enabled web platform to have:
 1. Voice and video communication between browsers (WebRTC)
 2. Peer-to-peer data exchange (WebRTC)
 3. Real-time server-client communication (WebSockets)
 4. Faster website delivery (HTTP/2)
-5. Efficient updating website content in real-time (Server-Sent Events)
+5. Faster connection and transfer of data (QUIC)
+6. Efficient updating website content in real-time (Server-Sent Events)
 
 *and many more rich and powerful experiences*
 
@@ -41,7 +42,8 @@ It's worth mentioning that it's **not only about the games** - there are plenty 
 
 ## Problem
 
-**Latency** and **congestion**. TCP has reliable and ordered packet delivery and is connection based protocol.
+**Latency** and **congestion**. TCP has reliable and ordered packet delivery and is connection based protocol.  
+The need of UDP over TCP is not under question as it is widely discussed in many articles about benefits of UDP over TCP in different cases. Here we trying just to summarize it.
 
 **Reliability** - this is not always desired by application logic, outdated information might not be relevant anymore and can be ignored. TCP will ensure redelivery of packets, which leads to congestion of packets delivery leading to latency spikes. UDP does not guarantee reliability out of the box, thus avoids congestion problem which can be used as benefits to ensure data is delivered ASAP.
 
