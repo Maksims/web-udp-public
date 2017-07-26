@@ -86,4 +86,5 @@ Current state of WebRTC is very complex. Due to this is not well adopted and req
 - http://slither.io/
 - Real-time data visualization (where timing is critical)
 - Various HTML5 multiplayer games (e.g. http://iogames.space/)
+- Facebook Instant Games
 - *Please PR your case*
