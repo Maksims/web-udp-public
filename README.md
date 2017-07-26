@@ -16,6 +16,7 @@ Spread the word, [RT's](https://twitter.com/mrmaxm/status/890256659607584768) ar
   - [2. Web UDP - new simple API](#2-web-udp---new-simple-api)
   - [3. WebRTC 2.0 - simplified](#3-webrtc-20---simplified)
 - [Requirements](#requirements)
+- [Security](#security)
 - [Public discussions and demand](#public-discussions-and-demand)
 - [Potential first adapters](#potential-first-adapters)
 
@@ -69,12 +70,23 @@ Current state of WebRTC is very complex. Due to this is not well adopted and req
 
 ## Requirements
 
-1. **Security** - it has to benefit from SSL. Probing local ports shouldn't be a possibility.
+1. [**Security**](#security)
 2. **Connection based** - to prevent UDP probing as well as make it simpler to use.
 3. **Server-client** - p2p is already solved by WebRTC, and due to nature of security p2p is not reliable for applications where decisions can't be trusted to clients. This affects monetization and application logic, where decisions should be made by authoritative server and not clients.
 4. **Simple to use** - WebSockets success is very much because of its simplicity to implement server-side protocol, data framing and how simple it is to use in browser.
 5. **Minimum header overhead** - to minimize traffic.
 6. **Minimum opinion or tech requirements** - WebRTC suffers from complexity and requirements when WebSockets are minimal in that terms enabling its adaption by wide variety of platforms and web developers.
+
+## Security
+
+Low-level access to UDP protocol will lead to many security issues:
+1. DDoS attacks
+2. Ports scanning
+3. Not using HTTP for handshake
+4. Lack of encryption
+
+API should address those security concerns, without overcomplicating the API for front-end as well as implementation for back-end.  
+That's why [UDPSocket](https://www.w3.org/TR/tcp-udp-sockets/) is not an option.
 
 ## Public discussions and demand
 
