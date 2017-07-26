@@ -58,7 +58,7 @@ WebRTC is extremely complex and is made for peer-to-peer type communication.
 
 1. **Security** - it has to benefit from SSL. Probing local ports shouldn't be a possibility.
 2. **Connection based** - to prevent UDP probing as well as make it simpler to use.
-3. **Server-client** - p2p is already solved by WebRTC, and due to nature of security p2p is not reliable for applications where decisions can't be trusted to clients. This affects monetisation and application logic, where decisions should be made by authoritative server and not cients.
+3. **Server-client** - p2p is already solved by WebRTC, and due to nature of security p2p is not reliable for applications where decisions can't be trusted to clients. This affects monetisation and application logic, where decisions should be made by authoritative server and not clients.
 4. **Simple to use** - WebSockets success is very much because of it's simplicity to implement server-side protocol, data framing and how simple it is to use in browser.
 5. **Minimum header overhead** - to minimize traffic.
 6. **Minimum opinion or tech requirements** - WebRTC suffers from complexity and requirements when WebSockets are minimal in that terms enabling it's adaption by wide variety of platforms and web developers.
