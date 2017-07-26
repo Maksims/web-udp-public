@@ -1,7 +1,8 @@
 # Web UDP
 
 This repo is to **express public need** for potential **Web UDP** technology to enable server-client high-performance networking.  
-And **shape the requirements** from existing needs and potential future appications.
+And **shape the requirements** from existing needs and potential future appications.  
+To motivate W3C Members and browser vendors to start discussion and propose spec as a solution.
 
 PR's and discussions in [Issues](https://github.com/Maksims/web-udp-public/issues) are welcome.
 
