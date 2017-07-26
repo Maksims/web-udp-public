@@ -1,7 +1,7 @@
 # Web UDP
 
 This repo is to **express public need** for potential **Web UDP** technology to enable server-client high-performance networking.  
-And **shape the requirements** from existing needs and potential future appications.  
+And **shape the requirements** from existing needs and potential future applications.  
 To motivate W3C Members and browser vendors to start discussion and propose spec as a solution.
 
 PR's and discussions in [Issues](https://github.com/Maksims/web-udp-public/issues) are welcome.  
@@ -41,38 +41,38 @@ It's worth mentioning that it's **not only about the games** - there are plenty 
 
 ## Problem
 
-**Latency** and **congestion**. TCP has reliabile and ordered packet delivery and is connetion based protocol.
+**Latency** and **congestion**. TCP has reliable and ordered packet delivery and is connection based protocol.
 
-**Reliability** - this is not always desired by application logic, outdated information might not be relevant anymore and can be ignored. TCP will ensure redelivery of packets, which leads to congestion of packets delivery leading to latency spikes. UDP does not guarantees reliability out of the box, thus avoids congestion problem which can be used as benefits to ensure data is delivered ASAP.
+**Reliability** - this is not always desired by application logic, outdated information might not be relevant anymore and can be ignored. TCP will ensure redelivery of packets, which leads to congestion of packets delivery leading to latency spikes. UDP does not guarantee reliability out of the box, thus avoids congestion problem which can be used as benefits to ensure data is delivered ASAP.
 
-**Ordered Delivery** - TCP uses sequencing number and acknowledgments to guarantee ordered *read* of packets, and if any packets are not delivered through sequence it will redeliver them. This leads to blocking reads, which leads to latency spikes and gets worse if network environment has higher packet loss.
+**Ordered Delivery** - TCP uses sequencing number and acknowledgments to guarantee ordered *read* of packets, and if any packets are not delivered through sequence it will redeliver them. This leads to blocking read, which leads to latency spikes and gets worse if network environment has higher packet loss.
 
 **Connection** - is actually a good element for most developers, especially from security and web platform point of view.
 
 ## Possible Solutions
 
-Protocol that does not guarantees reliability and ordered delivery out of the box, allowing developer to implement any of the techniques on top of it if required. This provides stable devlivery timing and low latency out of the box.
+Protocol that does not guarantee reliability and ordered delivery out of the box, allowing developer to implement any of the techniques on top of it if required. This provides stable delivery timing and low latency out of the box.
 
 ### 1. WebSockets UDP Extension
 
-One of the option to solve this, is by adding new extension to existing websocket protocol. Which would implement extra functionality to establish UDP packets exchange. This would benefit from existing security of WebSockets, provide handshake mechanism and allow delopers to follow progressive approach where they can fall-back to TCP logic if UDP extension is not supported by either side.
+One of the option to solve this, is by adding new extension to existing websocket protocol. Which would implement extra functionality to establish UDP packets exchange. This would benefit from existing security of WebSockets, provide handshake mechanism and allow developers to follow progressive approach where they can fall-back to TCP logic if UDP extension is not supported by either side.
 
 ### 2. Web UDP - new simple API
 
-Another approach would be by developing completely new API, very similar to WebSockets that would address unique requirements of UDP networking logic, as well as potentially provide extra features, e.g. optional arguments for sending packets with reliability or ordered delivery within "channels". This is something developers can implement themself with different specifics on top of raw UDP.
+Another approach would be by developing completely new API, very similar to WebSockets that would address unique requirements of UDP networking logic, as well as potentially provide extra features, e.g. optional arguments for sending packets with reliability or ordered delivery within "channels". This is something developers can implement them self with different specifics on top of raw UDP.
 
 ### 3. WebRTC 2.0 - simplified
 
-Current state of WebRTC is very complex. Due to this is not well adopted and requires a lot developmer resources. Simply speaking, it is not solo-web-dev friendly like WebSockets are today. Potential option of extending the spec to modularize and simplify the requirements that would allow use of some parts of WebRTC making it much more accessible for server-client scenarios.
+Current state of WebRTC is very complex. Due to this is not well adopted and requires a lot developer resources. Simply speaking, it is not solo-web-dev friendly like WebSockets are today. Potential option of extending the spec to modularize and simplify the requirements that would allow use of some parts of WebRTC making it much more accessible for server-client scenarios.
 
 ## Requirements
 
 1. **Security** - it has to benefit from SSL. Probing local ports shouldn't be a possibility.
 2. **Connection based** - to prevent UDP probing as well as make it simpler to use.
-3. **Server-client** - p2p is already solved by WebRTC, and due to nature of security p2p is not reliable for applications where decisions can't be trusted to clients. This affects monetisation and application logic, where decisions should be made by authoritative server and not clients.
-4. **Simple to use** - WebSockets success is very much because of it's simplicity to implement server-side protocol, data framing and how simple it is to use in browser.
+3. **Server-client** - p2p is already solved by WebRTC, and due to nature of security p2p is not reliable for applications where decisions can't be trusted to clients. This affects monetization and application logic, where decisions should be made by authoritative server and not clients.
+4. **Simple to use** - WebSockets success is very much because of its simplicity to implement server-side protocol, data framing and how simple it is to use in browser.
 5. **Minimum header overhead** - to minimize traffic.
-6. **Minimum opinion or tech requirements** - WebRTC suffers from complexity and requirements when WebSockets are minimal in that terms enabling it's adaption by wide variety of platforms and web developers.
+6. **Minimum opinion or tech requirements** - WebRTC suffers from complexity and requirements when WebSockets are minimal in that terms enabling its adaption by wide variety of platforms and web developers.
 
 ## Public discussions and demand
 
