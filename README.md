@@ -55,7 +55,7 @@ Protocol that does not guarantee reliability and ordered delivery out of the box
 
 ### 1. WebSockets UDP Extension
 
-One of the option to solve this, is by adding new extension to existing websocket protocol. Which would implement extra functionality to establish UDP packets exchange. This would benefit from existing security of WebSockets, provide handshake mechanism and allow developers to follow progressive approach where they can fall-back to TCP logic if UDP extension is not supported by either side.
+One of the option to solve this, is by adding new extension to existing websocket protocol. Which would implement extra functionality to establish UDP packets exchange. This would benefit from existing security of WebSockets, provide handshake mechanism and allow developers to follow progressive approach where they can fall-back to TCP logic if UDP extension is not supported by either side. [QUIC](https://www.chromium.org/quic) - is potential transport implementation for such extension.
 
 ### 2. Web UDP - new simple API
 
