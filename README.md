@@ -90,6 +90,7 @@ That's why [UDPSocket](https://www.w3.org/TR/tcp-udp-sockets/) is not an option.
 
 ## Public discussions and demand
 
+- [Hacker News](https://news.ycombinator.com/item?id=14859280) - discussion on this repository topic.
 - [Why can't I send UDP packets from a browser?](https://new.gafferongames.com/post/why_cant_i_send_udp_packets_from_a_browser/) - detailed analysis why on UDP in browsers and proposed alternative solution.
 - [Hacker News: WebRTC: the future of web games (getkey.eu)](https://news.ycombinator.com/item?id=13264952) - discussion why WebRTC is not suitable alternative.
 - [A comprehensive dive into WebRTC for client-server web games](http://blog.brkho.com/2017/03/15/dive-into-client-server-web-games-webrtc/) - from article it is apparent how complex WebRTC is, and how hard to implement. Due it's complexity [it is slow on adoption](http://caniuse.com/#feat=rtcpeerconnection) by major browser vendors. But networking benefits of UDP over TCP is clear from article.
