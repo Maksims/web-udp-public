@@ -87,4 +87,5 @@ Current state of WebRTC is very complex. Due to this is not well adopted and req
 - Real-time data visualization (where timing is critical)
 - Various HTML5 multiplayer games (e.g. http://iogames.space/)
 - Facebook Instant Games
+- [WebTorrent](https://webtorrent.io) (to enable a browser [DHT](https://en.wikipedia.org/wiki/Distributed_hash_table) for peer discovery)
 - *Please PR your case*
