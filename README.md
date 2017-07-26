@@ -4,7 +4,8 @@ This repo is to **express public need** for potential **Web UDP** technology to 
 And **shape the requirements** from existing needs and potential future appications.  
 To motivate W3C Members and browser vendors to start discussion and propose spec as a solution.
 
-PR's and discussions in [Issues](https://github.com/Maksims/web-udp-public/issues) are welcome.
+PR's and discussions in [Issues](https://github.com/Maksims/web-udp-public/issues) are welcome.  
+Spread the word, [RT's](https://twitter.com/mrmaxm/status/890256659607584768) are welcome.
 
 ## Table of Contents
 
