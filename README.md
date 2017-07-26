@@ -11,8 +11,10 @@ Spread the word, [RT's](https://twitter.com/mrmaxm/status/890256659607584768) ar
 
 - [Overview](#overview)
 - [Problem](#problem)
-- [Solution](#solution)
-  - [Why not WebRTC](#why-not-webrtc)
+- [Possible Solutions](#possible-solutions)
+  - [1. WebSocket UDP Extension](#1-websocket-udp-extension)
+  - [2. Web UDP - new simple API](#2-web-udp---new-simple-api)
+  - [3. WebRTC 2.0 - simplified](#3-webrtc-20---simplified)
 - [Requirements](#requirements)
 - [Public discussions and demand](#public-discussions-and-demand)
 - [Potential first adapters](#potential-first-adapters)
@@ -47,13 +49,21 @@ It's worth mentioning that it's **not only about the games** - there are plenty 
 
 **Connection** - is actually a good element for most developers, especially from security and web platform point of view.
 
-## Solution
+## Possible Solutions
 
 Protocol that does not guarantees reliability and ordered delivery out of the box, allowing developer to implement any of the techniques on top of it if required. This provides stable devlivery timing and low latency out of the box.
 
-## Why not WebRTC
+### 1. WebSocket UDP Extension
 
-WebRTC is extremely complex and is made for peer-to-peer type communication.
+One of the option to solve this, is by adding new extension to existing websocket protocol. Which would implement extra functionality to establish UDP packets exchange. This would benefit from existing security of WebSockets, provide handshake mechanism and allow delopers to follow progressive approach where they can fall-back to TCP logic if UDP extension is not supported by either side.
+
+### 2. Web UDP - new simple API
+
+Another approach would be by developing completely new API, very similar to WebSockets that would address unique requirements of UDP networking logic, as well as potentially provide extra features, e.g. optional arguments for sending packets with reliability or ordered delivery within "channels". This is something developers can implement themself with different specifics on top of raw UDP.
+
+### 3. WebRTC 2.0 - simplified
+
+Current state of WebRTC is very complex. Due to this is not well adopted and requires a lot developmer resources. Simply speaking, it is not solo-web-dev friendly like WebSockets are today. Potential option of extending the spec to modularize and simplify the requirements that would allow use of some parts of WebRTC making it much more accessible for server-client scenarios.
 
 ## Requirements
 
