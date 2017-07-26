@@ -73,4 +73,6 @@ WebRTC is extremely complex and is made for peer-to-peer type communication.
 
 - http://agar.io/
 - http://slither.io/
+- Real-time data visualization (where timing is critical)
+- Various HTML5 multiplayer games
 - *Please PR your case*
