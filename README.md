@@ -12,7 +12,7 @@ Spread the word, [RT's](https://twitter.com/mrmaxm/status/890256659607584768) ar
 - [Overview](#overview)
 - [Problem](#problem)
 - [Possible Solutions](#possible-solutions)
-  - [1. WebSocket UDP Extension](#1-websocket-udp-extension)
+  - [1. WebSockets UDP Extension](#1-websockets-udp-extension)
   - [2. Web UDP - new simple API](#2-web-udp---new-simple-api)
   - [3. WebRTC 2.0 - simplified](#3-webrtc-20---simplified)
 - [Requirements](#requirements)
@@ -53,7 +53,7 @@ It's worth mentioning that it's **not only about the games** - there are plenty 
 
 Protocol that does not guarantees reliability and ordered delivery out of the box, allowing developer to implement any of the techniques on top of it if required. This provides stable devlivery timing and low latency out of the box.
 
-### 1. WebSocket UDP Extension
+### 1. WebSockets UDP Extension
 
 One of the option to solve this, is by adding new extension to existing websocket protocol. Which would implement extra functionality to establish UDP packets exchange. This would benefit from existing security of WebSockets, provide handshake mechanism and allow delopers to follow progressive approach where they can fall-back to TCP logic if UDP extension is not supported by either side.
 
