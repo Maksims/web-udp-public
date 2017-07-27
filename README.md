@@ -1,7 +1,8 @@
 # WebSockets UDP (or alternative) Extension
 
 This repo is to **express public need** for a technology to enable **server-client low-latency communication**, **without** mandatory reliability and/or ordered delivery mechanics of underlying transport protocol.
-And **shape the requirements** from existing needs and potential future applications.
+
+And **shape the requirements** from existing needs and potential future applications.  
 To motivate W3C Members, IETF Community and Browser Vendors to start discussion and propose RFC to fuel further development for a solution.
 
 PR's and discussions in [Issues](https://github.com/Maksims/web-udp-public/issues) are welcome.
