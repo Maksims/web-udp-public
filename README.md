@@ -100,7 +100,8 @@ List of potential underlying protocols that can be used for an implementation:
 ## Public discussions and demand
 
 - [Hacker News](https://news.ycombinator.com/item?id=14859280) - discussion on this repository topic.
-- [Why can't I send UDP packets from a browser?](https://new.gafferongames.com/post/why_cant_i_send_udp_packets_from_a_browser/) - detailed analysis why on UDP in browsers and proposed alternative solution.
+- [Why can't I send UDP packets from a browser?](https://new.gafferongames.com/post/why_cant_i_send_udp_packets_from_a_browser/) - detailed analysis why on UDP in browsers and proposed alternative solution: [netcode.io](http://netcode.io/). By Glenn Fiedler.
+- [UDP vs TCP](https://gafferongames.com/post/udp_vs_tcp/) - Which protocol is best for games? By Glenn Fiedler
 - [Hacker News: WebRTC: the future of web games (getkey.eu)](https://news.ycombinator.com/item?id=13264952) - discussion why WebRTC is not suitable alternative.
 - [A comprehensive dive into WebRTC for client-server web games](http://blog.brkho.com/2017/03/15/dive-into-client-server-web-games-webrtc/) - from article it is apparent how complex WebRTC is, and how hard to implement. Due it's complexity [it is slow on adoption](http://caniuse.com/#feat=rtcpeerconnection) by major browser vendors. But networking benefits of UDP over TCP is clear from article.
 
