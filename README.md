@@ -1,6 +1,6 @@
 # Web UDP
 
-This repo is to **express public need** for potential **Web UDP** technology to enable **server-client low-latency communication**.  
+This repo is to **express public need** for potential **Web UDP** (or other protocol) technology to enable **server-client low-latency communication**.  
 And **shape the requirements** from existing needs and potential future applications.  
 To motivate W3C Members and browser vendors to start discussion and propose spec as a solution.
 
