@@ -36,54 +36,56 @@ Those technologies have own area of application and enabled web platform to have
 
 In recent years another medium have born: **HTML5 Games**. Adobe Flash is [going away](https://blogs.adobe.com/conversations/2017/07/adobe-flash-update.html), and HTML5 games industry is steadily growing.
 
-Another new trend has born: IO Games - one of the most accessible multiplayer games out there. Some of popular examples: [agar.io](http://agar.io/), [slither.io](http://slither.io/) and [many more](http://iogames.space/). They all rely on currently the only available technology for real-time server-client communication - WebSockets.
+Another new trend has born: IO Games - one of the most accessible multiplayer games out there. Some of popular examples: [agar.io](http://agar.io/), [slither.io](http://slither.io/) and [many more](http://iogames.space/). They all rely on currently the only viable technology for real-time server-client communication - WebSockets. WebRTC for server-client is overly complex (read further).
 
 But this limits network capabilities as **TCP for games has limits**.  
-It's worth mentioning that it's **not only about the games** - there are plenty use cases for Web UDP.
+It's worth mentioning that it's **not only about the games** - there are plenty use cases for low-latency unreliable and unordered server-client comminication.
 
 ## Problem
 
 **Latency** and **congestion**. TCP has reliable and ordered packet delivery and is connection based protocol.  
 The need of UDP over TCP is not under question as it is widely discussed in many articles about benefits of UDP over TCP in different cases. Here we trying just to summarize it.
 
-**Reliability** - this is not always desired by application logic, outdated information might not be relevant anymore and can be ignored. TCP will ensure redelivery of packets, which leads to congestion of packets delivery leading to latency spikes. UDP does not guarantee reliability out of the box, thus avoids congestion problem which can be used as benefits to ensure data is delivered ASAP.
+**Reliability** - this is not always desired by application logic, outdated information might not be relevant anymore and can be ignored. TCP will ensure delivery of packets, which leads to congestions that results in latency spikes due to need of acknowledgments and redelivery of packets. UDP does not guarantee reliability out of the box, thus avoids congestion problem which can be used as benefits to ensure latest data is delivered ASAP.
 
-**Ordered Delivery** - TCP uses sequencing number and acknowledgments to guarantee ordered *read* of packets, and if any packets are not delivered through sequence it will redeliver them. This leads to blocking read, which leads to latency spikes and gets worse if network environment has higher packet loss.
+**Ordered Delivery** - TCP uses sequencing number and acknowledgments to guarantee ordered *read* of packets, and if any packets are not delivered through the sequence it will redeliver them. This leads to blocking read, which leads to latency spikes and gets worse if network environment has higher packet loss.
 
-**Connection** - is actually a good element for most developers, especially from security and web platform point of view.
+**Connection** - in web context, connection is not bad at all although from API point of view might be unnecessary as far as reliable connection with origin-based security model can be established with initial handshake by the underlying protocol. Further this connection might be not required.
 
 ## Possible Solutions
 
-Protocol that does not guarantee reliability and ordered delivery out of the box, allowing developer to implement any of the techniques on top of it if required. This provides stable delivery timing and low latency out of the box.
+Protocol that does not guarantee reliability and ordered delivery out of the box, allowing developer to implement any of the techniques on top of it if required. This provides stable delivery timings and low latency out of the box.
 
 ### 1. WebSockets UDP Extension
 
-One of the option to solve this, is by adding new extension to existing websocket protocol. Which would implement extra functionality to establish UDP packets exchange. This would benefit from existing security of WebSockets, provide handshake mechanism and allow developers to follow progressive approach where they can fall-back to TCP logic if UDP extension is not supported by either side. [QUIC](https://www.chromium.org/quic) - is potential transport implementation for such extension.
+One of the option to solve this, is by adding new extension to existing websocket protocol. Which would implement extra functionality to establish UDP packets exchange. This would benefit from existing origin-based security model of WebSockets and allow developers to follow progressive approach where they can fall-back to TCP logic if UDP extension is not supported by either side.
 
 ### 2. Web UDP - new simple API
 
-Another approach would be by developing completely new API, very similar to WebSockets that would address unique requirements of UDP networking logic, as well as potentially provide extra features, e.g. optional arguments for sending packets with reliability or ordered delivery within "channels". This is something developers can implement them self with different specifics on top of raw UDP.
+Another approach would be by developing completely new API, very similar to WebSockets that would address unique requirements of UDP networking logic, as well as potentially provide extra features, that could be part of specs and implemented over the API, providing developer with fine-grain options of how to send messages.
 
 ### 3. WebRTC 2.0 - simplified
 
-Current state of WebRTC is very complex. Due to this is not well adopted and requires a lot developer resources. Simply speaking, it is not solo-web-dev friendly like WebSockets are today. Potential option of extending the spec to modularize and simplify the requirements that would allow use of some parts of WebRTC making it much more accessible for server-client scenarios.
+Current state of WebRTC is overly complex. Due to this is not well adopted and requires a lot developer resources. Simply speaking, it is not solo-web-dev friendly like WebSockets are today. Potential option of extending the spec to modularize and simplify the requirements that would allow use of some parts of WebRTC making it much more accessible for server-client scenarios and simplified API that would make it more accessible for web developers.
 
 ## Requirements
 
 1. [**Security**](#security)
-2. **Connection based** - to prevent UDP probing as well as make it simpler to use.
-3. **Server-client** - p2p is already solved by WebRTC, and due to nature of security p2p is not reliable for applications where decisions can't be trusted to clients. This affects monetization and application logic, where decisions should be made by authoritative server and not clients.
+2. **Origin-based security model** - to prevent UDP (or other protocol) probing (port scanning) and suit server-client networking model.
+3. **Server-client** - p2p is already solved by WebRTC, application security over p2p is not reliable for applications where decisions can't be trusted to clients. This affects application logic, where decisions should be made by authoritative server and not clients.
 4. **Simple to use** - WebSockets success is very much because of its simplicity to implement server-side protocol, data framing and how simple it is to use in browser.
-5. **Minimum header overhead** - to minimize traffic.
+5. **Minimum header overhead** - some of extra data framing over pure UDP (or other protocol) will be required but has to be kept at minimum.
 6. **Minimum opinion or tech requirements** - WebRTC suffers from complexity and requirements when WebSockets are minimal in that terms enabling its adaption by wide variety of platforms and web developers.
+7. **Congestion control** - implementation should deal with overwhelming network layer of server or client.
 
 ## Security
 
-Low-level access to UDP protocol will lead to many security issues:
+Low-level access to UDP (or other protocol) protocol will lead to many security issues:
 1. DDoS attacks
 2. Ports scanning
-3. Not using HTTP for handshake
+3. Lack of origin-based security model
 4. Lack of encryption
+5. Access to local UDP (or other protocol) sockets
 
 API should address those security concerns, without overcomplicating the API for front-end as well as implementation for back-end.  
 That's why [UDPSocket](https://www.w3.org/TR/tcp-udp-sockets/) is not an option.
