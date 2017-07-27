@@ -12,8 +12,8 @@ Spread the word, [RT's](https://twitter.com/mrmaxm/status/890256659607584768) ar
 - [Overview](#overview)
 - [Problem](#problem)
 - [Possible Solutions](#possible-solutions)
-  - [1. WebSockets UDP Extension](#1-websockets-udp-or-alternative-extension)
-  - [2. Web UDP - new simple API](#2-webudp-or-alternative---new-simple-api)
+  - [1. WebSockets UDP (or alternative) Extension](#1-websockets-udp-or-alternative-extension)
+  - [2. WebUDP (or alternative) - new simple API](#2-webudp-or-alternative---new-simple-api)
   - [3. WebRTC 2.0 - simplified](#3-webrtc-20---simplified)
 - [Requirements](#requirements)
 - [Security](#security)
@@ -92,10 +92,10 @@ That's why [UDPSocket](https://www.w3.org/TR/tcp-udp-sockets/) is not an option.
 
 List of potential underlying protocols that can be used for an implementation:
 
-1. **DCCP** [RFC-4340](https://tools.ietf.org/html/rfc4340)- is connection based message protocol that implements feature negitiation and congestion control. It does not implement reliability or ordered delivery as part of a protocol leaving it to an application layer. This protocol aslo has DCCP-UDP ([RFC-6773](https://tools.ietf.org/html/rfc6773)) implementation path over UDP to utilize existing NAT with UDP capabilities before DCCP is natively supported by internet infrastructure.
-2. **QUIC** [IETF Draft](https://tools.ietf.org/html/draft-hamilton-early-deployment-quic-00) - is fairly new connection-based transport layer protocol [implemented by Google](https://www.chromium.org/quic) and available already in Chrome. It is fast growing and evolving protocol which is implemented on top of UDP. It is designed to reduce connection and transport latency as well as bandwidth. Although it has reliability built in which might be undesirable for current effort.
-3. **SCTP** [RFC-4960](https://tools.ietf.org/html/rfc4960) - is standarized message based protocol with optional reliability and ordered delivery built in, as well as congestion control. It is also used in WebRTC for DataChannel. Due to adoption by WebRTC it lead to better support by internet infrastructure and implementations on OS level.
-4. **DTLS** [RFC-6347](https://tools.ietf.org/html/rfc6347) - is a layer that can be implemented on top of transport protocol to provide security to meet web requirements. It is also used by WebRTC implementation.
+1. **DCCP** ([RFC-4340](https://tools.ietf.org/html/rfc4340)) - is connection based message protocol that implements feature negitiation and congestion control. It does not implement reliability or ordered delivery as part of a protocol leaving it to an application layer. This protocol aslo has DCCP-UDP ([RFC-6773](https://tools.ietf.org/html/rfc6773)) implementation path over UDP to utilize existing NAT with UDP capabilities before DCCP is natively supported by internet infrastructure.
+2. **QUIC** ([IETF Draft](https://tools.ietf.org/html/draft-hamilton-early-deployment-quic-00)) - is fairly new connection-based transport layer protocol [implemented by Google](https://www.chromium.org/quic) and available already in Chrome. It is fast growing and evolving protocol which is implemented on top of UDP. It is designed to reduce connection and transport latency as well as bandwidth. Although it has reliability built in which might be undesirable for current effort.
+3. **SCTP** ([RFC-4960](https://tools.ietf.org/html/rfc4960)) - is standarized message based protocol with optional reliability and ordered delivery built in, as well as congestion control. It is also used in WebRTC for DataChannel. Due to adoption by WebRTC it lead to better support by internet infrastructure and implementations on OS level.
+4. **DTLS** ([RFC-6347](https://tools.ietf.org/html/rfc6347)) - is a layer that can be implemented on top of transport protocol to provide security to meet web requirements. It is also used by WebRTC implementation.
 
 ## Public discussions and demand
 
