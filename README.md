@@ -41,7 +41,7 @@ In recent years another medium have born: **HTML5 Games**. Adobe Flash is [going
 Which lead to birth of IO Games - one of the most accessible multiplayer games out there. Some of popular examples: [agar.io](http://agar.io/), [slither.io](http://slither.io/) and [many more](http://iogames.space/). They all rely on currently the only viable technology for real-time server-client communication - WebSockets. WebRTC for server-client is overly complex (read further).
 
 But this limits network capabilities as **TCP for games has limits**.
-It's worth mentioning that it's **not only about the games** - there are plenty use cases for low-latency unreliable and unordered server-client comminications.
+It's worth mentioning that it's **not only about the games** - there are plenty use cases for low-latency unreliable and unordered server-client communications.
 
 ## Problem
 
@@ -82,7 +82,7 @@ Current state of WebRTC is overly complex and was designed primarily for peer-to
 Such API and underlying protocol implementation should address security concerns to make it web friendly:
 
 1. **DDoS attacks** - not exposing raw protocol functionality will utilize security practices similar to WebSockets.
-2. **Ports scanning** - using origin-based security model will require hanshaking and validation of headers to prevent possibility to connect to any IPs and ports.
+2. **Ports scanning** - using origin-based security model will require handshaking and validation of headers to prevent possibility to connect to any IPs and ports.
 3. **Encryption** - utilize existing encryption mechanics of HTTP/HTTPS.
 4. **Congestion control** - to avoid overflowing the internet infrastructure, the underlying transport protocol has to implement congestion control.
 
@@ -93,9 +93,9 @@ That's why [UDPSocket](https://www.w3.org/TR/tcp-udp-sockets/) is not an option.
 
 List of potential underlying protocols that can be used for an implementation:
 
-1. **DCCP** ([RFC-4340](https://tools.ietf.org/html/rfc4340)) - is connection based message protocol that implements feature negitiation and congestion control. It does not implement reliability or ordered delivery as part of a protocol leaving it to an application layer. This protocol aslo has DCCP-UDP ([RFC-6773](https://tools.ietf.org/html/rfc6773)) implementation path over UDP to utilize existing NAT with UDP capabilities before DCCP is natively supported by internet infrastructure.
+1. **DCCP** ([RFC-4340](https://tools.ietf.org/html/rfc4340)) - is connection based message protocol that implements feature negotiation and congestion control. It does not implement reliability or ordered delivery as part of a protocol leaving it to an application layer. This protocol also has DCCP-UDP ([RFC-6773](https://tools.ietf.org/html/rfc6773)) implementation path over UDP to utilize existing NAT with UDP capabilities before DCCP is natively supported by internet infrastructure.
 2. **QUIC** ([IETF Draft](https://tools.ietf.org/html/draft-hamilton-early-deployment-quic-00)) - is fairly new connection-based transport layer protocol [implemented by Google](https://www.chromium.org/quic) and available already in Chrome. It is fast growing and evolving protocol which is implemented on top of UDP. It is designed to reduce connection and transport latency as well as bandwidth. Although it has reliability built in which might be undesirable for current effort.
-3. **SCTP** ([RFC-4960](https://tools.ietf.org/html/rfc4960)) - is standarized message based protocol with optional reliability and ordered delivery built in, as well as congestion control. It is also used in WebRTC for DataChannel. Due to adoption by WebRTC it lead to better support by internet infrastructure and implementations on OS level.
+3. **SCTP** ([RFC-4960](https://tools.ietf.org/html/rfc4960)) - is standardized message based protocol with optional reliability and ordered delivery built in, as well as congestion control. It is also used in WebRTC for DataChannel. Due to adoption by WebRTC it lead to better support by internet infrastructure and implementations on OS level.
 4. **DTLS** ([RFC-6347](https://tools.ietf.org/html/rfc6347)) - is a layer that can be implemented on top of transport protocol to provide security to meet web requirements. It is also used by WebRTC implementation.
 
 ## Public discussions and demand
