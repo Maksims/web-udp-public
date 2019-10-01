@@ -2,7 +2,7 @@
 
 This repo is to **express public need** for a technology to enable **server-client low-latency communication**, **without** mandatory reliability and/or ordered delivery mechanics of underlying transport protocol.
 
-And **shape the requirements** from existing needs and potential future applications.  
+And **shape the requirements** from existing needs and potential future applications.
 To motivate W3C Members, IETF Community and Browser Vendors to start discussion and propose RFC to fuel further development for a solution.
 
 PR's and discussions in [Issues](https://github.com/Maksims/web-udp-public/issues) are welcome.
@@ -67,6 +67,10 @@ Another approach would be by developing completely new API, very similar to WebS
 ### 3. WebRTC 2.0 - simplified
 
 Current state of WebRTC is overly complex and was designed primarily for peer-to-peer communication. Due to this is not well adopted for server-client communication and requires a lot of developer resources. Simply speaking, it is not solo-web-dev friendly like WebSockets are today. Potential option of extending the spec to modularize and simplify the requirements that would allow use of some parts of WebRTC making it more accessible for server-client scenarios and simplified API that would make it more accessible for web developers.
+
+### 4. WebTransport
+
+There's a [draft spec of the WebTransport API](https://wicg.github.io/web-transport/) that allows web applications to establish interactive, bidirectional, multiplexed network connections - with support for both reliable and unreliable communication.
 
 ## Requirements
 
